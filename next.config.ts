@@ -2,14 +2,17 @@ import withPWA from 'next-pwa';
 
 const repo = 'gasolina-calculadora';
 
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
-  basePath: `/${repo}`,
-  assetPrefix: `/${repo}/`,
+  basePath: isProd ? `/${repo}` : '',
+  assetPrefix: isProd ? `/${repo}/` : '',
   trailingSlash: true,
+  reactStrictMode: false,
   output: 'export' as const,
 };
 
 export default withPWA({
   dest: 'public',
-  disable: process.env.NODE_ENV === 'development',
+  disable: !isProd,
 })(nextConfig);
