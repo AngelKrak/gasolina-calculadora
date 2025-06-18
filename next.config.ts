@@ -1,13 +1,12 @@
-import type { NextConfig } from "next";
-import withPWA from "next-pwa";
+import withPWA from 'next-pwa';
 
 const repo = 'gasolina-calculadora';
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   basePath: `/${repo}`,
   assetPrefix: `/${repo}/`,
   trailingSlash: true,
-  output: 'export',
+  output: 'export' as const,
 };
 
 export default withPWA({
